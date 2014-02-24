@@ -1,0 +1,3 @@
+base:
+  'eureka':
+    - nginx

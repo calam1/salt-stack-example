@@ -1,0 +1,3 @@
+master: 192.168.33.10
+id: 'eureka'
+file_client: remote
