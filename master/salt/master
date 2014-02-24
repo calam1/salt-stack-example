@@ -1,1 +1,6 @@
 auto_accept: True
+fileserver_backend:
+  - roots
+file_roots:
+  base:
+    - /srv/salt/

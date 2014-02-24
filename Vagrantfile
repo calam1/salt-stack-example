@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :master do |master|
     master.vm.box = "centos64"
+    master.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v0.1.0/centos64-x86_64-20131030.box"
     master.vm.provider :virtualbox do |v|
       #v.vmx["memsize"]  = "4096"
     end
@@ -21,18 +22,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.synced_folder "./master/srv/salt", "/srv/salt"
     master.vm.network :private_network, ip: "192.168.33.10"
     master.vm.hostname = "orion-salt-master"
-    master.vm.provision :shell, :inline => 
-    "sudo curl -o salt_install.sh -L http://bootstrap.saltstack.org;" \
-    "sudo sh salt_install.sh -M -N git v2014.1.0;" \
+
+#    master.vm.provision :shell, :inline =>
+#     "sudo yum -y install GitPython;"
 
     master.vm.provision :salt do |salt|
+      salt.install_master = true
+      salt.no_minion = true
       salt.master_config = "./master/salt/master"
-      salt.run_highstate = true
     end
   end
 
   config.vm.define :eureka do |eureka|
     eureka.vm.box = "centos64"
+    eureka.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v0.1.0/centos64-x86_64-20131030.box"
     eureka.vm.provider :virtualbox do |v|
       #v.vmx["memsize"]  = "4096"
     end
