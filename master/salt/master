@@ -1,5 +1,8 @@
 # security settings - accept all keys
-auto_accept: True
+#auto_accept: True
+
+#security settings - open for all, accept all authentication
+open_mode: True
 
 # git remotes for formulas
 gitfs_remotes:

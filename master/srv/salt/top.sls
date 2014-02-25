@@ -1,3 +1,5 @@
 base:
   'eureka':
     - apache
+    - java
+
