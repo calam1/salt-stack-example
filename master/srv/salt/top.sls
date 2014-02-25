@@ -1,3 +1,3 @@
 base:
   'eureka':
-    - nginx
+    - apache

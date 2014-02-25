@@ -20,11 +20,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       #v.customize ["modifyvm", :id, "--memory", "4096"]
     end
     master.vm.synced_folder "./master/srv/salt", "/srv/salt"
+    master.vm.synced_folder "./master/srv/pillar", "/srv/pillar"
     master.vm.network :private_network, ip: "192.168.33.10"
     master.vm.hostname = "orion-salt-master"
 
-#    master.vm.provision :shell, :inline =>
-#     "sudo yum -y install GitPython;"
+    master.vm.provision :shell, :inline =>
+     "sudo yum -y install GitPython;"
 
     master.vm.provision :salt do |salt|
       salt.install_master = true
@@ -45,9 +46,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     eureka.vm.network :private_network, ip: "192.168.33.11"
     eureka.vm.hostname = "eureka"
-#    eureka.vm.provision :shell, :inline =>
-#    "sudo curl -o salt_install.sh -L http://bootstrap.saltstack.org;" \
-#    "sudo sh salt_install.sh -D -A 192.168.33.10 git v2014.1.0"
 
     eureka.vm.provision :salt do |salt|
       salt.minion_config = "./eureka/salt/minion"

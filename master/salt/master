@@ -1,6 +1,21 @@
+# security settings - accept all keys
 auto_accept: True
+
+# git remotes for formulas
+gitfs_remotes:
+  - https://github.com/saltstack-formulas/sun-java-formula
+  - https://github.com/saltstack-formulas/tomcat-formula
+
+# fileserver settings
 fileserver_backend:
   - roots
+  - git
+
 file_roots:
   base:
-    - /srv/salt/
+    - /srv/salt
+
+# pillar settings
+pillar_roots:
+  base:
+    - /srv/pillar
