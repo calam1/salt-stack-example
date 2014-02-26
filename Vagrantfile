@@ -28,6 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      "sudo yum -y install GitPython;"
 
     master.vm.provision :salt do |salt|
+      salt.install_type = "git"
+      salt.install_args = "v2014.1.0"
       salt.install_master = true
       salt.no_minion = true
       salt.master_config = "./master/salt/master"
@@ -48,6 +50,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     eureka.vm.hostname = "eureka"
 
     eureka.vm.provision :salt do |salt|
+      salt.install_type = "git"
+      salt.install_args = "v2014.1.0"
       salt.minion_config = "./eureka/salt/minion"
       salt.run_highstate = true
     end
