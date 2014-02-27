@@ -3,4 +3,5 @@ base:
     - apache
     - java
     - tomcat
+    - maven
 

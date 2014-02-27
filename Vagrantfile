@@ -25,9 +25,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.network :private_network, ip: "192.168.33.10"
     master.vm.hostname = "orion-salt-master"
 
-# needed for salt-formulas hosted on git and when you use git as a backend fileserver - but it looks like salt stack downloads this by default now in the installation
-#    master.vm.provision :shell, :inline =>
-#     "sudo yum -y install GitPython;"
+# needed for salt-formulas hosted on git and when you use git as a backend fileserver 
+    master.vm.provision :shell, :inline =>
+     "sudo yum -y install GitPython;"
 
     master.vm.provision :salt do |salt|
       salt.install_type = "git"
