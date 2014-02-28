@@ -25,9 +25,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.network :private_network, ip: "192.168.33.10"
     master.vm.hostname = "orion-salt-master"
 
-# needed for salt-formulas hosted on git and when you use git as a backend fileserver 
+# needed for git access, when you use git as a backend fileserver 
     master.vm.provision :shell, :inline =>
-     "sudo yum -y install GitPython;"
+     "sudo apt-get -y install python-pip;" \
+     "sudo pip install GitPython;" \
+     "sudo apt-get -y install maven;"
 
     master.vm.provision :salt do |salt|
       salt.install_type = "git"
