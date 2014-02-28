@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!--
+  Reference Notes:
+  Approach taken from example at:  http://javasplitter.blogspot.com/2012/01/starting-dependency-war-artifact-using.html
+  Eureka pom dependencies taken from:  http://repo1.maven.org/maven2/com/netflix/eureka/eureka-server/1.1.37/eureka-server-1.1.37.pom
+  -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.micros.mcp</groupId>
+  <artifactId>eureka-server</artifactId>
+  <version>1.0</version>
+  <dependencies>
+    <dependency>
+      <groupId>com.netflix.eureka</groupId>
+      <artifactId>eureka-server</artifactId>
+      <version>1.1.37</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.cargo</groupId>
+        <artifactId>cargo-maven2-plugin</artifactId>
+        <version>1.3.2</version>
+        <configuration>
+          <container>
+            <containerId>tomcat7x</containerId>
+            <type>remote</type>
+            <!-- give the app 5 minutes to start up 
+            <timeout>300000</timeout> -->
+            <systemProperties>
+              <eureka.datacenter>MyOwn</eureka.datacenter>
+              <!-- do not wait after startup to sync the service client with the Eureka server registry -->
+              <eureka.waitTimeInMsWhenSyncEmpty>0</eureka.waitTimeInMsWhenSyncEmpty>
+              <eureka.numberRegistrySyncRetries>0</eureka.numberRegistrySyncRetries>
+            <!-- yes, these have to manually be added to override what is bundled in the downloaded war..ugh! -->
+            <!-- overriding entries in eureka-server.properties -->
+              <eureka.waitTimeInMsWhenSyncEmpty>0</eureka.waitTimeInMsWhenSyncEmpty>
+              <eureka.awsAccessId>NOT-APPLICABLE</eureka.awsAccessId>
+              <eureka.awsSecretKey>NOT-APPLICABLE</eureka.awsSecretKey>
+              
+            <!-- overriding entries in eureka-client.properties -->
+              <eureka.region>defaultZone</eureka.region>
+              <eureka.name>eureka</eureka.name>
+              <eureka.preferSameZone>false</eureka.preferSameZone>
+              <eureka.shouldUseDns>false</eureka.shouldUseDns>
+              <eureka.port>7070</eureka.port>
+              <eureka.environment>prod</eureka.environment>
+              <eureka.serviceUrl.default>http://localhost:7070/eureka/v2/</eureka.serviceUrl.default>
+            </systemProperties>
+          </container>
+	  <configuration>
+	    <type>runtime</type>
+            <properties>
+	      <cargo.hostname>eureka</cargo.hostname>
+	      <cargo.protocol>http</cargo.protocol>
+	      <cargo.servlet.port>7070</cargo.servlet.port>
+	      <cargo.remote.username>admin</cargo.remote.username>
+	      <cargo.remote.password>password</cargo.remote.password>
+              <cargo.logging>high</cargo.logging>
+            </properties>
+          </configuration>
+	  <deployer>
+	     <type>remote</type>
+          </deployer>
+
+          <deployables>
+            <deployable>
+              <groupId>com.netflix.eureka</groupId>
+              <type>war</type>
+              <artifactId>eureka-server</artifactId>
+              <properties>
+                <context>/eureka</context>
+              </properties>
+            </deployable>
+          </deployables>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
