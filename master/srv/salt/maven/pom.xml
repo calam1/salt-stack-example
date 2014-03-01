@@ -54,9 +54,9 @@
 	  <configuration>
 	    <type>runtime</type>
             <properties>
-	      <cargo.hostname>eureka</cargo.hostname>
+	      <cargo.hostname>192.168.33.11</cargo.hostname>
 	      <cargo.protocol>http</cargo.protocol>
-	      <cargo.servlet.port>7070</cargo.servlet.port>
+	      <cargo.servlet.port>8080</cargo.servlet.port>
 	      <cargo.remote.username>admin</cargo.remote.username>
 	      <cargo.remote.password>password</cargo.remote.password>
               <cargo.logging>high</cargo.logging>
