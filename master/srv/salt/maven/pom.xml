@@ -40,7 +40,6 @@
               <eureka.waitTimeInMsWhenSyncEmpty>0</eureka.waitTimeInMsWhenSyncEmpty>
               <eureka.awsAccessId>NOT-APPLICABLE</eureka.awsAccessId>
               <eureka.awsSecretKey>NOT-APPLICABLE</eureka.awsSecretKey>
-              
             <!-- overriding entries in eureka-client.properties -->
               <eureka.region>defaultZone</eureka.region>
               <eureka.name>eureka</eureka.name>
@@ -59,13 +58,13 @@
 	      <cargo.servlet.port>8080</cargo.servlet.port>
 	      <cargo.remote.username>admin</cargo.remote.username>
 	      <cargo.remote.password>password</cargo.remote.password>
+              <cargo.tomcat.manager>http://192.168.33.11:8080/manager/test</cargo.tomcat.manager>
               <cargo.logging>high</cargo.logging>
             </properties>
           </configuration>
 	  <deployer>
 	     <type>remote</type>
           </deployer>
-
           <deployables>
             <deployable>
               <groupId>com.netflix.eureka</groupId>
