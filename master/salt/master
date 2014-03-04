@@ -6,7 +6,7 @@ open_mode: True
 
 # git remotes for formulas
 gitfs_remotes:
-  - https://github.com/saltstack-formulas/maven-formula
+  - https://github.com/saltstack-formulas/hadoop-formula
 
 # fileserver settings
 fileserver_backend:

@@ -3,3 +3,4 @@ base:
     - apache
     - java
     - tomcat
+    - tomcat.manager
