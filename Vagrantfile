@@ -28,9 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 # needed for git access, when you use git as a backend fileserver and install mvn for deploy purposes
     master.vm.provision :shell, :inline =>
      "sudo apt-get -y install python-pip;" \
-     "sudo pip install GitPython;" \
-     "sudo apt-get update;" \
-     "sudo apt-get -y install maven;"
+     "sudo pip install GitPython;" 
 
     master.vm.provision :salt do |salt|
       salt.install_type = "git"

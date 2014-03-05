@@ -28,27 +28,6 @@
           <container>
             <containerId>tomcat7x</containerId>
             <type>remote</type>
-            <!-- give the app 5 minutes to start up 
-            <timeout>300000</timeout> -->
-            <systemProperties>
-              <eureka.datacenter>MyOwn</eureka.datacenter>
-              <!-- do not wait after startup to sync the service client with the Eureka server registry -->
-              <eureka.waitTimeInMsWhenSyncEmpty>0</eureka.waitTimeInMsWhenSyncEmpty>
-              <eureka.numberRegistrySyncRetries>0</eureka.numberRegistrySyncRetries>
-            <!-- yes, these have to manually be added to override what is bundled in the downloaded war..ugh! -->
-            <!-- overriding entries in eureka-server.properties -->
-              <eureka.waitTimeInMsWhenSyncEmpty>0</eureka.waitTimeInMsWhenSyncEmpty>
-              <eureka.awsAccessId>NOT-APPLICABLE</eureka.awsAccessId>
-              <eureka.awsSecretKey>NOT-APPLICABLE</eureka.awsSecretKey>
-            <!-- overriding entries in eureka-client.properties -->
-              <eureka.region>defaultZone</eureka.region>
-              <eureka.name>eureka</eureka.name>
-              <eureka.preferSameZone>false</eureka.preferSameZone>
-              <eureka.shouldUseDns>false</eureka.shouldUseDns>
-              <eureka.port>7070</eureka.port>
-              <eureka.environment>prod</eureka.environment>
-              <eureka.serviceUrl.default>http://localhost:7070/eureka/v2/</eureka.serviceUrl.default>
-            </systemProperties>
           </container>
 	  <configuration>
 	    <type>runtime</type>
