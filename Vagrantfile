@@ -60,6 +60,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  config.vm.define :tenant do |tenant|
+    tenant.vm.box = "precise64"
+    tenant.vm.box_url = "http://files.vagrantup.com/precise64.box"
+    tenant.vm.provider :virtualbox do |v|
+      #v.vmx["memsize"]  = "4096"
+    end
+    tenant.vm.provider :virtualbox do |v|
+      v.name = "Tenant_Salt_Minion"
+      #v.customize ["modifyvm", :id, "--memory", "4096"]
+    end
+    tenant.vm.network :private_network, ip: "192.168.33.12"
+    tenant.vm.hostname = "tenant"
+
+    tenant.vm.provision :salt do |salt|
+      salt.install_type = "git"
+      salt.install_args = "v2014.1.0"
+      salt.minion_config = "./tenant/salt/minion"
+      salt.run_highstate = true
+    end
+  end
+
+#  config.vm.provision "shell",
 #  config.vm.provision "shell",
 #    inline: "sudo curl -o salt_install.sh -L http://bootstrap.saltstack.org;" \
 #    "sudo sh salt_install.sh -M -N git v2014.1.0;" \

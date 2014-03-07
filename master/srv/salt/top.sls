@@ -7,3 +7,6 @@ base:
     - tomcat.start
     - maven
     - maven.pom
+  'tenant':
+    - java
+    - tenant
