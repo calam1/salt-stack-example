@@ -9,4 +9,9 @@ base:
     - maven.pom
   'tenant':
     - java
+    - tomcat
+    - tomcat.manager
     - tenant
+    - tenant.copyWar
+    - tenant.properties
+    - tomcat.start
