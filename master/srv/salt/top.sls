@@ -23,3 +23,11 @@ base:
     - admin.copyWar
     - admin.properties
     - tomcat.start
+  'promote':
+    - java
+    - tomcat
+    - tomcat.manager
+    - promote
+    - promote.copyWar
+    - promote.properties
+    - tomcat.start
