@@ -13,13 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.box = "precise64"
     master.vm.box_url = "http://files.vagrantup.com/precise64.box"
     master.vm.provider :virtualbox do |v|
-      #v.vmx["memsize"]  = "4096"
-    end
-    master.vm.provider :virtualbox do |v|
       v.name = "Orion_Salt_Master"
-      #v.customize ["modifyvm", :id, "--memory", "4096"]
     end
-
     master.vm.synced_folder "./master/srv/salt", "/srv/salt"
     master.vm.synced_folder "./master/srv/pillar", "/srv/pillar"
     master.vm.network :private_network, ip: "192.168.33.10"
@@ -43,11 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     eureka.vm.box = "precise64"
     eureka.vm.box_url = "http://files.vagrantup.com/precise64.box"
     eureka.vm.provider :virtualbox do |v|
-      #v.vmx["memsize"]  = "4096"
-    end
-    eureka.vm.provider :virtualbox do |v|
       v.name = "Eureka_Salt_Minion"
-      #v.customize ["modifyvm", :id, "--memory", "4096"]
     end
     eureka.vm.network :private_network, ip: "192.168.33.11"
     eureka.vm.hostname = "eureka"
@@ -63,12 +54,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :tenant do |tenant|
     tenant.vm.box = "precise64"
     tenant.vm.box_url = "http://files.vagrantup.com/precise64.box"
-    tenant.vm.provider :virtualbox do |v|
-      #v.vmx["memsize"]  = "4096"
-    end
+
     tenant.vm.provider :virtualbox do |v|
       v.name = "Tenant_Salt_Minion"
-      #v.customize ["modifyvm", :id, "--memory", "4096"]
     end
     tenant.vm.network :private_network, ip: "192.168.33.12"
     tenant.vm.hostname = "tenant"
@@ -85,11 +73,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     admin.vm.box = "precise64"
     admin.vm.box_url = "http://files.vagrantup.com/precise64.box"
     admin.vm.provider :virtualbox do |v|
-      #v.vmx["memsize"]  = "4096"
-    end
-    admin.vm.provider :virtualbox do |v|
       v.name = "Admin_Salt_Minion"
-      #v.customize ["modifyvm", :id, "--memory", "4096"]
     end
     admin.vm.network :private_network, ip: "192.168.33.13"
     admin.vm.hostname = "admin"
@@ -106,11 +90,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     promote.vm.box = "precise64"
     promote.vm.box_url = "http://files.vagrantup.com/precise64.box"
     promote.vm.provider :virtualbox do |v|
-      #v.vmx["memsize"]  = "4096"
-    end
-    promote.vm.provider :virtualbox do |v|
       v.name = "Promote_Salt_Minion"
-      #v.customize ["modifyvm", :id, "--memory", "4096"]
     end
     promote.vm.network :private_network, ip: "192.168.33.14"
     promote.vm.hostname = "promote"

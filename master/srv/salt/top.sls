@@ -8,6 +8,7 @@ base:
     - maven
     - maven.pom
   'tenant':
+    - apache
     - java
     - tomcat
     - tomcat.manager
@@ -16,6 +17,7 @@ base:
     - tenant.properties
     - tomcat.start
   'admin':
+    - apache
     - java
     - tomcat
     - tomcat.manager
@@ -24,6 +26,7 @@ base:
     - admin.properties
     - tomcat.start
   'promote':
+    - apache
     - java
     - tomcat
     - tomcat.manager
