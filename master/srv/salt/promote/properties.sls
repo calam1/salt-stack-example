@@ -1,3 +1,10 @@
+/etc/hosts:
+    file.managed:
+        - source: salt://promote/files/hosts
+        - user: root
+        - group: root
+        - mode: 640
+
 /opt/apache-tomcat-7.0.52/webapps/promote-private/WEB-INF/classes/Application.properties:
     file.managed:
         - source: salt://promote/files/Application.properties
