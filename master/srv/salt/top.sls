@@ -1,4 +1,4 @@
-base:
+localhost:
   'eureka':
     - apache
     - java
@@ -34,3 +34,5 @@ base:
     - promote.copyWar
     - promote.properties
     - tomcat.start
+
+

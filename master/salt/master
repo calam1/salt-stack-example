@@ -16,8 +16,12 @@ fileserver_backend:
 file_roots:
   base:
     - /srv/salt
+  localhost:
+    - /srv/salt/localhost
 
 # pillar settings
 pillar_roots:
   base:
     - /srv/pillar
+  localhost:
+    - /srv/pillar/localhost
