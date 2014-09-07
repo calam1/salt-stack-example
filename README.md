@@ -1,5 +1,6 @@
-orion-salt-stack
+salt-stack-example
 ================
+This is an example of vagrant spinning up servers, downloading wars from artifactory, provisioning those machines and starting up multiple applications.
 
 orion/mcp deployment via SaltStack -
 
